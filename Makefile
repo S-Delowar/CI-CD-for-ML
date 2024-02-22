@@ -1,9 +1,9 @@
 install:
 	pip install --upgrade pip &&\
-	pip install -r requirements.txt
+	pip install -r requirements.txt black
 
 format:
-	black *.py
+	$(shell which black) *.py
 
 train:
 	python train.py
@@ -16,4 +16,3 @@ eval:
 	echo '![Confusion Matrix](./Results/model_results.pnd)' >> report.md
 
 	cml comment create report.md
-	
